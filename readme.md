@@ -1,4 +1,4 @@
-[Starting the System with Eclipse]
+## Starting the System with Eclipse
 
 -Convert project into MavenProject
 -Change eMail properties in /BVIS/src/main/resources/application.properties
@@ -16,7 +16,7 @@
 
 
 
-[Structure]
+## Structure
 
 -Web Services:
 -> com.group5.BVIS.Billings
