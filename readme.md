@@ -18,28 +18,28 @@
 
 ## Structure
 
--Web Services:
--> com.group5.BVIS.Billings
--> com.group5.BVIS.Cars
--> com.group5.BVIS.Contracts
--> com.group5.BVIS.DamageReport
--> com.group5.BVIS.email
+*  Web Services:
+	*  com.group5.BVIS.Billings
+	*  com.group5.BVIS.Cars
+	*  com.group5.BVIS.Contracts
+	*  com.group5.BVIS.DamageReport
+	*  com.group5.BVIS.email
 
--Camunda Delegates:
--> com.group5.BVIS.delegates
+* Camunda Delegates:
+	* com.group5.BVIS.delegates
 
--REST Models (structuring and bundling data that is sent via REST-call as defined by the interface definition):
--> com.group5.BVIS.RestModels
+* REST Models (structuring and bundling data that is sent via REST-call as defined by the interface definition):
+	* com.group5.BVIS.RestModels
 
--Website:
--> com.group5.BVIS.webapp
--> com.group5.BVIS.webapp.formModels
--> /BVIS/src/main/resources/templates
--> /BVIS/src/main/resources/static
+* Website:
+	* com.group5.BVIS.webapp
+	* com.group5.BVIS.webapp.formModels
+	* /BVIS/src/main/resources/templates
+	* /BVIS/src/main/resources/static
 
--User Forms:
--> /BVIS/src/main/resources/static/forms
+* User Forms:
+	* /BVIS/src/main/resources/static/forms
 
--Procsess Models:
--> /BVIS/src/main/resources
+* Procsess Models:
+	* /BVIS/src/main/resources
 
