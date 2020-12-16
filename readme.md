@@ -1,18 +1,18 @@
 ## Starting the System with Eclipse
 
--Convert project into MavenProject
--Change eMail properties in /BVIS/src/main/resources/application.properties
--Change eMail server in /BVIS/src/main/java/com/group5/BVIS/email/eMailController.java
--Input correct REST-Endpoint in:
-	-> /BVIS/src/main/java/com/group5/BVIS/delegates/SendAndReceiveOffers.java
-	-> /BVIS/src/main/java/com/group5/BVIS/delegates/SendContract.java
-	-> /BVIS/src/main/java/com/group5/BVIS/delegates/SendDamageReport.java
-	-> /BVIS/src/main/java/com/group5/BVIS/delegates/SendInsuranceFees.java
-	-> /BVIS/src/main/java/com/group5/BVIS/delegates/SignalContractEndAndReceiveOverallDamageAssessment.java
--Run project as MavenInstall
--Execute .jar
--Open website at localhost:8080
--Open Camunda at localhost:8080/app/
+* Convert project into MavenProject
+* Change eMail properties in /BVIS/src/main/resources/application.properties
+* Change eMail server in /BVIS/src/main/java/com/group5/BVIS/email/eMailController.java
+* Input correct REST-Endpoint in:
+	* /BVIS/src/main/java/com/group5/BVIS/delegates/SendAndReceiveOffers.java
+	* /BVIS/src/main/java/com/group5/BVIS/delegates/SendContract.java
+	* /BVIS/src/main/java/com/group5/BVIS/delegates/SendDamageReport.java
+	* /BVIS/src/main/java/com/group5/BVIS/delegates/SendInsuranceFees.java
+	* /BVIS/src/main/java/com/group5/BVIS/delegates/SignalContractEndAndReceiveOverallDamageAssessment.java
+* Run project as MavenInstall
+* Execute .jar
+* Open website at localhost:8080
+* Open Camunda at localhost:8080/app/
 
 
 
