@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1ahdcqa" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
+  <bpmn:collaboration id="BVISDamageHandling">
+    <bpmn:participant id="Participant_16yjlv5" name="Operations" processRef="DamageHandling" />
+  </bpmn:collaboration>
+  <bpmn:process id="DamageHandling" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_02nfn1e</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Task_02x25rj" name="Create Damage report" camunda:class="com.group5.BVIS.delegates.CreateDamageReport">
+      <bpmn:incoming>SequenceFlow_0ik9esi</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1jm2xkb</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sendTask id="Task_0arpe5y" name="Send damage report" camunda:class="com.group5.BVIS.delegates.SendDamageReport">
+      <bpmn:incoming>SequenceFlow_1jm2xkb</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1sujyrp</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="EndEvent_0dy1vv5">
+      <bpmn:incoming>SequenceFlow_1sujyrp</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Task_1h12khc" name="Record damage">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="damageClassification" label="How severe is the damge?" type="long" defaultValue="1" />
+          <camunda:formField id="contractId" label="Contract Id" type="long" defaultValue="6" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_02nfn1e</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ik9esi</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_1236b7y">
+      <bpmn:incoming>SequenceFlow_1buo0xa</bpmn:incoming>
+      <bpmn:errorEventDefinition errorRef="Error_1q27c61" />
+    </bpmn:endEvent>
+    <bpmn:boundaryEvent id="BoundaryEvent_17jnr13" attachedToRef="Task_02x25rj">
+      <bpmn:outgoing>SequenceFlow_1buo0xa</bpmn:outgoing>
+      <bpmn:conditionalEventDefinition>
+        <bpmn:condition xsi:type="bpmn:tFormalExpression">#{contractNotFound}</bpmn:condition>
+      </bpmn:conditionalEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_02nfn1e" sourceRef="StartEvent_1" targetRef="Task_1h12khc" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ik9esi" sourceRef="Task_1h12khc" targetRef="Task_02x25rj" />
+    <bpmn:sequenceFlow id="SequenceFlow_1jm2xkb" sourceRef="Task_02x25rj" targetRef="Task_0arpe5y" />
+    <bpmn:sequenceFlow id="SequenceFlow_1sujyrp" sourceRef="Task_0arpe5y" targetRef="EndEvent_0dy1vv5" />
+    <bpmn:sequenceFlow id="SequenceFlow_1buo0xa" sourceRef="BoundaryEvent_17jnr13" targetRef="EndEvent_1236b7y" />
+  </bpmn:process>
+  <bpmn:error id="Error_1jqmaou" name="Error_1h5q80b" />
+  <bpmn:error id="Error_1q27c61" name="ContractNotFoundError" errorCode="404" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="BVISDamageHandling">
+      <bpmndi:BPMNShape id="Participant_16yjlv5_di" bpmnElement="Participant_16yjlv5">
+        <dc:Bounds x="83" y="292" width="742" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="160" y="401" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_02nfn1e_di" bpmnElement="SequenceFlow_02nfn1e">
+        <di:waypoint x="196" y="419" />
+        <di:waypoint x="238" y="419" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0qehzcv_di" bpmnElement="Task_02x25rj">
+        <dc:Bounds x="390" y="379" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jm2xkb_di" bpmnElement="SequenceFlow_1jm2xkb">
+        <di:waypoint x="490" y="419" />
+        <di:waypoint x="551" y="419" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_1otyd5c_di" bpmnElement="Task_0arpe5y">
+        <dc:Bounds x="551" y="379" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0dy1vv5_di" bpmnElement="EndEvent_0dy1vv5">
+        <dc:Bounds x="698" y="401" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1sujyrp_di" bpmnElement="SequenceFlow_1sujyrp">
+        <di:waypoint x="651" y="419" />
+        <di:waypoint x="698" y="419" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ik9esi_di" bpmnElement="SequenceFlow_0ik9esi">
+        <di:waypoint x="338" y="419" />
+        <di:waypoint x="390" y="419" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1dtcqhl_di" bpmnElement="Task_1h12khc">
+        <dc:Bounds x="238" y="379" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1buo0xa_di" bpmnElement="SequenceFlow_1buo0xa">
+        <di:waypoint x="490" y="361" />
+        <di:waypoint x="490" y="323" />
+        <di:waypoint x="698" y="323" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BoundaryEvent_06pscmf_di" bpmnElement="BoundaryEvent_17jnr13">
+        <dc:Bounds x="472" y="361" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0rclyh8_di" bpmnElement="EndEvent_1236b7y">
+        <dc:Bounds x="698" y="305" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

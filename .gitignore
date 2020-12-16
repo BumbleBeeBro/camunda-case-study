@@ -1,0 +1,24 @@
+/BVIS/target
+/BVIS/bin/src/main/resources/application.properties
+/BVIS/bin
+/BVIS/src/main/resources/application.properties
+/BVIS/Javadoc
+
+# Eclipse
+.classpath
+.project
+.settings/
+camunda-db.mv.db
+camunda-db.trace.db
+
+# Intellij
+.idea/
+*.iml
+*.iws
+ 
+# Mac
+.DS_Store
+ 
+# Maven
+log/
+target/
